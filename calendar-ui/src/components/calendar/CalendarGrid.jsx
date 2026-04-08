@@ -17,6 +17,25 @@ import WeekHeader from "./WeekHeader";
 export default function CalendarGrid({ currentDate, range, setRange }) {
   const [isDragging, setIsDragging] = useState(false);
 
+  // ✅ YEAR-INDEPENDENT HOLIDAYS
+  const holidays = {
+    "01-01": "New Year",
+    "01-14": "Makar Sankranti",
+    "01-26": "Republic Day",
+    "03-08": "Holi",
+    "03-30": "Ram Navami",
+    "04-14": "Ambedkar Jayanti",
+    "05-01": "Labour Day",
+    "06-17": "Eid al-Adha",
+    "08-15": "Independence Day",
+    "08-28": "Raksha Bandhan",
+    "09-05": "Teacher's Day",
+    "10-02": "Gandhi Jayanti",
+    "10-20": "Diwali",
+    "11-01": "Karnataka Rajyotsava",
+    "12-25": "Christmas"
+  };
+
   const start = startOfMonth(currentDate);
   const end = endOfMonth(currentDate);
 
@@ -95,9 +114,12 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
             day.getMonth() === currentDate.getMonth();
 
           const selected = isInRange(day);
-
-          // 🔥 NEW: today highlight
           const isToday = isSameDay(day, new Date());
+
+          // ✅ MONTH-DAY KEY (YEAR INDEPENDENT)
+          const dateKey = `${String(day.getMonth() + 1).padStart(2, "0")}-${String(day.getDate()).padStart(2, "0")}`;
+
+          const isHoliday = holidays[dateKey];
 
           return (
             <div
@@ -105,6 +127,7 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
               onMouseDown={() => handleMouseDown(day)}
               onMouseEnter={() => handleMouseEnter(day)}
               onMouseUp={handleMouseUp}
+              title={isHoliday || ""}
               className={`
                 text-center py-2 text-[15px] cursor-pointer select-none
                 transition-all duration-200 ease-in-out
@@ -125,10 +148,24 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
                     ? "ring-2 ring-blue-400 font-semibold rounded-md bg-blue-50"
                     : ""
                 }
+
+                ${
+                  isHoliday && !selected
+                    ? "text-red-500 font-semibold"
+                    : ""
+                }
+
                 hover:bg-blue-100 hover:rounded-lg hover:scale-105 hover:shadow-sm
               `}
             >
-              {day.getDate()}
+              {/* 🔥 CLEAN HOLIDAY DOT */}
+              <div className="relative inline-block">
+                {day.getDate()}
+
+                {isHoliday && (
+                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full shadow-sm"></span>
+                )}
+              </div>
             </div>
           );
         })}
