@@ -125,7 +125,6 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
                     ? "ring-2 ring-blue-400 font-semibold rounded-md bg-blue-50"
                     : ""
                 }
-
                 hover:bg-blue-100 hover:rounded-lg hover:scale-105 hover:shadow-sm
               `}
             >

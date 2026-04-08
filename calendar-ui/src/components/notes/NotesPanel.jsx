@@ -4,33 +4,23 @@ import toast from "react-hot-toast";
 export default function NotesPanel({ range }) {
   const [notesList, setNotesList] = useLocalStorage("rangeNotes", []);
   const [input, setInput] = useLocalStorage("tempNote", "");
-
-  // ✅ FIX: support single date OR range
   const currentNote = notesList.find(
     (n) =>
       n.start === range.start &&
       n.end === (range.end || range.start)
   );
-
   const displayValue = currentNote ? currentNote.note : input;
-
   const handleSave = () => {
-    // ❌ no date
     if (!range.start) {
       toast.error("Select a date ❗");
       return;
     }
-
-    // ❌ empty note
     if (!input.trim()) {
       toast.error("Note cannot be empty ✍️");
       return;
     }
-
-    // ✅ auto fix end date
     const startDate = range.start;
     const endDate = range.end || range.start;
-
     const newNote = {
       start: startDate,
       end: endDate,
@@ -50,8 +40,6 @@ export default function NotesPanel({ range }) {
   return (
     <div className="relative h-full">
       <p className="text-sm font-semibold mb-2">Notes</p>
-
-      {/* TEXTAREA */}
       <textarea
         value={displayValue || ""}
         onChange={(e) => setInput(e.target.value)}
@@ -59,14 +47,11 @@ export default function NotesPanel({ range }) {
         className="w-full h-[160px] text-sm outline-none resize-none bg-transparent relative z-10"
       />
 
-      {/* NOTEBOOK LINES */}
       <div className="absolute top-7 left-0 right-0 pointer-events-none z-0">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="border-b border-gray-300 h-5 mb-2" />
         ))}
       </div>
-
-      {/* BUTTON */}
       <div className="flex justify-center mt-4">
         <button
           onClick={handleSave}

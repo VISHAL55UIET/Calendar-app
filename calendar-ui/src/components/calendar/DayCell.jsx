@@ -2,10 +2,8 @@ import { getDay } from "date-fns";
 
 export default function DayCell({ day }) {
   const dayIndex = getDay(day);
-
   const isSaturday = dayIndex === 6;
   const isSunday = dayIndex === 0;
-
   return (
     <div
       className={`
