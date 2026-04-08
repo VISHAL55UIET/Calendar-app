@@ -8,6 +8,7 @@ import {
   isAfter,
   isBefore,
   isEqual,
+  isSameDay
 } from "date-fns";
 
 import { useState } from "react";
@@ -95,6 +96,9 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
 
           const selected = isInRange(day);
 
+          // 🔥 NEW: today highlight
+          const isToday = isSameDay(day, new Date());
+
           return (
             <div
               key={i}
@@ -116,14 +120,20 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
                     : "text-gray-300")
                 }
 
+                ${
+                  isToday && !selected
+                    ? "ring-2 ring-blue-400 font-semibold rounded-md bg-blue-50"
+                    : ""
+                }
+
                 hover:bg-blue-100 hover:rounded-lg hover:scale-105 hover:shadow-sm
               `}
             >
-              {day.getDate()}   
+              {day.getDate()}
             </div>
           );
         })}
       </div>
-    </> 
+    </>
   );
 }
