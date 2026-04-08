@@ -119,11 +119,11 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
                 hover:bg-blue-100 hover:rounded-lg hover:scale-105 hover:shadow-sm
               `}
             >
-              {day.getDate()}
+              {day.getDate()}   
             </div>
           );
         })}
       </div>
-    </>
+    </> 
   );
 }
