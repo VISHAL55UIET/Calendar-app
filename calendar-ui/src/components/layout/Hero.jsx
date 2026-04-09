@@ -13,12 +13,10 @@ import sep from "../../images/months/sep.jpg";
 import oct from "../../images/months/oct.jpg";
 import nov from "../../images/months/nov.jpg";
 import dec from "../../images/months/dec.jpg";
-
 const monthImages = [
   jan, feb, mar, apr, may, jun,
   jul, aug, sep, oct, nov, dec
 ];
-
 export default function Hero({ currentDate, nextMonth, prevMonth }) {
   const [currentImage, setCurrentImage] = useState(
     monthImages[currentDate.getMonth()]
@@ -26,7 +24,7 @@ export default function Hero({ currentDate, nextMonth, prevMonth }) {
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    setFade(false); // fade out
+    setFade(false); 
 
     const timeout = setTimeout(() => {
       setCurrentImage(monthImages[currentDate.getMonth()]);

@@ -19,7 +19,6 @@ export default function useRangeSelection() {
 
   const isInRange = (date) =>
     startDate && endDate && date >= startDate && date <= endDate;
-
   return {
     startDate,
     endDate,

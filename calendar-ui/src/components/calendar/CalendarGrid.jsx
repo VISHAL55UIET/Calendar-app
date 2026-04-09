@@ -16,8 +16,6 @@ import WeekHeader from "./WeekHeader";
 
 export default function CalendarGrid({ currentDate, range, setRange }) {
   const [isDragging, setIsDragging] = useState(false);
-
-  // ✅ YEAR-INDEPENDENT HOLIDAYS
   const holidays = {
     "01-01": "New Year",
     "01-14": "Makar Sankranti",
@@ -66,9 +64,7 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
 
   const handleMouseEnter = (day) => {
     if (!isDragging || !range.start) return;
-
     const startDate = new Date(range.start);
-
     if (isBefore(day, startDate)) {
       setRange({
         start: day.toISOString(),
@@ -102,7 +98,6 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
   return (
     <>
       <WeekHeader />
-
       <div
         className="grid grid-cols-7 text-sm mt-3 gap-y-3"
         onMouseLeave={() => setIsDragging(false)}
@@ -115,8 +110,6 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
 
           const selected = isInRange(day);
           const isToday = isSameDay(day, new Date());
-
-          // ✅ MONTH-DAY KEY (YEAR INDEPENDENT)
           const dateKey = `${String(day.getMonth() + 1).padStart(2, "0")}-${String(day.getDate()).padStart(2, "0")}`;
 
           const isHoliday = holidays[dateKey];
@@ -158,7 +151,6 @@ export default function CalendarGrid({ currentDate, range, setRange }) {
                 hover:bg-blue-100 hover:rounded-lg hover:scale-105 hover:shadow-sm
               `}
             >
-              {/* 🔥 CLEAN HOLIDAY DOT */}
               <div className="relative inline-block">
                 {day.getDate()}
 

@@ -7,7 +7,6 @@ export default function Body({ currentDate, range, setRange }) {
       <div>
         <NotesPanel range={range} />
       </div>
-
       <div>
         <CalendarGrid 
           currentDate={currentDate}

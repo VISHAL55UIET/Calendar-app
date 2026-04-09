@@ -7,18 +7,14 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function CalendarCard() {
   const { currentDate, nextMonth, prevMonth } = useCalendar();
-
   const [range, setRange] = useLocalStorage("range", {
     start: null,
     end: null,
   });
-
   const lastScroll = useRef(0);
   const handleScroll = (e) => {
     const now = Date.now();
-
     if (now - lastScroll.current < 500) return; 
-
     if (e.deltaY > 0) {
       nextMonth();
     } else {
@@ -46,8 +42,6 @@ export default function CalendarCard() {
       "
     >
       <Header />
-
-      {/* HERO */}
       <div className="transition-all duration-500 ease-in-out">
         <Hero
           currentDate={currentDate}
@@ -55,8 +49,6 @@ export default function CalendarCard() {
           prevMonth={prevMonth}
         />
       </div>
-
-      {/* BODY */}
       <div className="transition-all duration-500 ease-in-out">
         <Body 
           currentDate={currentDate} 

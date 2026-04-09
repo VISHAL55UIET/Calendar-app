@@ -7,7 +7,6 @@ export default function useCalendar() {
   const nextMonth = () => {
     setCurrentDate((prev) => addMonths(prev, 1));
   };
-
   const prevMonth = () => {
     setCurrentDate((prev) => subMonths(prev, 1));
   };
