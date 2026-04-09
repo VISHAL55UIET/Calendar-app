@@ -1,4 +1,4 @@
-# 📅 Interactive Calendar Component
+# Interactive Calendar Component
 
 A polished, interactive wall-style calendar built using React + Vite + Tailwind CSS, designed to mimic a physical calendar while delivering a modern, responsive user experience.
 
@@ -11,14 +11,14 @@ https://calendar-app-eta-gold.vercel.app/
 
 ##  Features
 
-### 🖼 Wall Calendar Aesthetic
+###  Wall Calendar Aesthetic
 - Clean and minimal UI inspired by real wall calendars  
 - Dynamic hero image that updates based on the current month  
 - Balanced layout between visuals and functionality  
 
 ---
 
-### 📆 Day Range Selection
+###  Day Range Selection
 - Click and drag to select a date range  
 - Clear visual states for:
   - Start date  
@@ -28,14 +28,14 @@ https://calendar-app-eta-gold.vercel.app/
 
 ---
 
-### 📝 Notes Integration
+###  Notes Integration
 - Add notes for selected date or range  
 - Data persists using localStorage  
 - Notes remain after page refresh  
 
 ---
 
-### 🎯 Smart UX Enhancements
+###  Smart UX Enhancements
 - Scroll to change month (unique interaction)  
 - Highlight current date (Today indicator)  
 - Smooth transitions for month change  
@@ -43,14 +43,14 @@ https://calendar-app-eta-gold.vercel.app/
 
 ---
 
-### 📱 Fully Responsive
+### Fully Responsive
 - Desktop: side-by-side layout  
 - Mobile: stacked layout  
 - Optimized for touch interactions  
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - React (Vite)
 - Tailwind CSS
@@ -60,7 +60,7 @@ https://calendar-app-eta-gold.vercel.app/
 
 ---
 
-## ⚙️ How to Run Locally
+##  How to Run Locally
 
 git clone <https://calendar-app-eta-gold.vercel.app/>  
 cd calendar-ui  
@@ -69,19 +69,19 @@ npm run dev
 
 ---
 
-## 📦 Build
+## Build
 
 npm run build
 
 ---
 
-## 🎥 Demo Video
+##  Demo Video
 
-()
+https://youtu.be/RDOtmWf1Mqk?si=WxhgtxhUSUzUivs8
 
 ---
 
-## 💡 Key Design Decisions
+##  Key Design Decisions
 
 - Focused on clean UI and smooth UX instead of over-design  
 - Used client-side storage (localStorage) as required  
@@ -90,7 +90,7 @@ npm run build
 
 ---
 
-## 🧠 What This Demonstrates
+##  What This Demonstrates
 
 - Component architecture  
 - State management  
